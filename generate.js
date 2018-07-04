@@ -42,6 +42,29 @@ var scriptTypeFolder = () => {
     }
     return '\\widgets'
 }
+var generateScriptTypeIndex = () => {
+    if(options.includes('routable')){
+        if(!fs.existsSync(`${__dirname}\\src\\components\\routes\\index.coffee`)){
+            fs.writeFileSync(`${__dirname}\\src\\components\\routes\\index.coffee`,
+                 `# File imports for routes.  Import your route here!\r\n`
+                +`import Vue from 'vue'\r\n`
+                +`import VueRouter from 'vue-router'\r\n`
+                +`import VueTidyRoutes from 'vue-tidyroutes'\r\n\r\n`
+                +`import '@/components/routes/${name}'\r\n\r\n`
+                +'Vue.use(VueRouter)'
+            )
+        }
+    }else{
+        if(!fs.existsSync(`${__dirname}\\src\\components\\widgets\\index.coffee`)){
+            fs.writeFileSync(`${__dirname}\\src\\components\\widgets\\index.coffee`,
+                 `# File imports for widgets.  Import your widgets(sub components) here!\r\n`
+                +`import Vue from 'vue'\r\n\r\n`
+                +`import ${name} from '@/components/widgets/${name}'\r\n\r\n`
+                +`Vue.component('${name}', ${name})`
+            )
+        }
+    }
+}
 var control = {
     'component': () => {
         var templateFile = `<div class="${name}">\r\n    Hello World from ${name} component\r\n</div>`
@@ -49,6 +72,7 @@ var control = {
         var vueFilename = `${__dirname}\\src\\components${scriptTypeFolder()}\\`
         var vueFileSrcs = {t:'',s:'',c:''}
         var vueTagBody = {t:'',s:'',c:''}
+        try { shell.mkdir('-p',vueFilename) } catch (e) {;}
         if(options.includes('4files') || options.includes('script')){
             vueFilename = `${vueFilename}\\${name}\\`
             var vueSubitemsDir = `${__dirname}\\src\\components${scriptTypeFolder()}\\${name}\\`
@@ -74,10 +98,19 @@ var control = {
                         + `\r\n<style lang="scss" ${vueFileSrcs.c}>${vueTagBody.c}</style>\r\n`
                         + `\r\n<template ${vueFileSrcs.t}>${vueTagBody.t}</template>`
         fs.writeFileSync(`${vueFilename}\\${name}.vue`,vueFile)
+        generateScriptTypeIndex()
     },
     'service': () => {
         var servicesDir = `${__dirname}\\src\\services`
-        try { fs.mkdirSync(`${__dirname}\\src\\services`) } catch (e) {;}
+        try { fs.mkdirSync(servicesDir) } catch (e) {;}
+        if(!fs.existsSync(`${__dirname}\\src\\services\\index.coffee`)){
+            fs.writeFileSync(`${__dirname}\\src\\services\\index.coffee`,
+                `# File imports for services.  Import your services here!\r\n`
+                +`import Vue from 'vue'\r\n`
+                +`import injector from 'vue-inject'\r\n\r\n`
+                +`import '@/services/${name}.coffee'\r\n`
+            )
+        }
         var scriptFile = `import injector from 'vue-inject'\r\n\r\n`
         + `class ${name} \r\n`
         + `     @classVariable: 'this is my class variable'\r\n\r\n`
@@ -89,13 +122,50 @@ var control = {
     },
     'model': () => {
         var modelsDir = `${__dirname}\\src\\models`
-        try { fs.mkdirSync(`${__dirname}\\src\\models`) } catch (e) {;}
+        try { fs.mkdirSync(modelsDir) } catch (e) {;}
         var scriptFile = `class ${name} \r\n`
         + `     @classVariable: 'this is my class variable'\r\n\r\n`
         + `     constructor: () ->\r\n`
         + `         @classVariable = 'something new'\r\n\r\n`
         + `     getValue: () -> @classVariable\r\n\r\n`
         fs.writeFileSync(modelsDir + `\\${name}.coffee`,scriptFile)
+    },
+    'module': () => {
+        var modulesDir = `${__dirname}\\src\\store`
+        try { fs.mkdirSync(modulesDir) } catch (e) {;}
+        modulesDir = modulesDir + '\\modules'
+        try { fs.mkdirSync(modulesDir) } catch (e) {;}
+        if(!fs.existsSync(`${__dirname}\\src\\store\\index.coffee`)){
+            fs.writeFileSync(`${__dirname}\\src\\store\\index.coffee`,
+                `# File imports for store modules.  Import your modules here!\r\n`
+                +`import Vue from 'vue'\r\n`
+                +`import Vuex from 'vuex'\r\n\r\n`
+                +`import ${name} from '@/store/modules/${name}.coffee'\r\n\r\n`
+                +`Vue.use(Vuex)\r\n\r\n`
+                +`export default new Vuex.Store\r\n`
+                +`    modules:\r\n`
+                +`        ${name}: ${name}\r\n`
+                +`    state: null\r\n`
+                +'    getters: null\r\n'
+                +'    actions: null\r\n'
+                +'    mutations: null\r\n'
+            )
+        }
+        try { fs.mkdirSync(modulesDir) } catch (e) {;}
+        var scriptFile = `export default \r\n`
+                        + `         namespaced: true\r\n`
+                        + `         state:\r\n`
+                        + `            first: ''\r\n`
+                        + `            last: ''\r\n`
+                        + `         getters:\r\n`
+                        + `            fullname: (state) => "#{state.first} #{state.last}"\r\n`
+                        + `         mutations:\r\n`
+                        + `            updatefirst: (state, first) =>\r\n`
+                        + `                state.first = first\r\n`
+                        + `         actions:\r\n`
+                        + `            firstupdate: (context, first) =>\r\n`
+                        + `                context.commit('updatefirst', first)\r\n`
+        fs.writeFileSync(modulesDir + `\\${name}.coffee`,scriptFile)
     }
 }
 control[fileType]()
