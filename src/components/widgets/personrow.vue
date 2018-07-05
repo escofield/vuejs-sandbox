@@ -12,9 +12,9 @@ export default
 <li class="personrow">
     <div>
         <ul>
-            <li>{{person.name | capitalize}}</li>
+            <li>{{person.name | capitalize }}</li>
             <li>{{person.email}}</li>
-            <li>{{person.birthDate}}</li>
+            <li>{{person.birthDate | dateFormat }}</li>
         </ul>
     </div>
 </li>
