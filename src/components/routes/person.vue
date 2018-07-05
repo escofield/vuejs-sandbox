@@ -1,6 +1,6 @@
 <script lang="coffee" >
 import VueTidyRoutes from 'vue-tidyroutes'
-import Person from '@/models/Person.coffee'
+import Person from '@/models/person.coffee'
 import { mapActions } from 'vuex'
 
 person =
