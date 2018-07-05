@@ -14,9 +14,13 @@ export default
 </style>
 <template>
 <div id="app">
-    <img src="@/assets/logo.png">
-    <router-link :to="{ name: 'HelloWorld'}">Home</router-link>
-    <router-link :to="{ name: 'Test'}">Test</router-link>
+<ul>
+    <li><router-link :to="{ name: 'home'}">Home</router-link>
+    </li>
+    <li>
+    <li><router-link :to="{ name: 'people'}">People</router-link>
+    </li>
+</ul>
     <router-view/>
 </div>
 </template>

@@ -2,17 +2,7 @@ var fs = require('fs')
 var shell = require('shelljs')
 
 var [ , , fileType, name, ...options] = process.argv
-if(fileType == undefined){
-    console.log('Usage: [fileType - component|service] [name] [options - routable 4files|script]')
-    console.log('  component:  can be routable, this includes special tidyroute info in the component')
-    console.log('  component vue structure allows for one file, or split up.')
-    console.log('    4files to split out all files into individual ones')
-    console.log('    script to split out only the script file')
-    console.log('    otherwise all contents are contained in the single .vue file')
-    console.log('    when chosing any option to split out files, all files are placed into a subdirectory')
 
-    return
-}
 var generateRoutableScriptFile = () => {
     return `import VueTidyRoutes from 'vue-tidyroutes'\r\n\r\n`
             + `${name} =\r\n`
@@ -143,12 +133,9 @@ var control = {
                 +`import ${name} from '@/store/modules/${name}.coffee'\r\n\r\n`
                 +`Vue.use(Vuex)\r\n\r\n`
                 +`export default new Vuex.Store\r\n`
+                +`    strict: true`
                 +`    modules:\r\n`
                 +`        ${name}: ${name}\r\n`
-                +`    state: null\r\n`
-                +'    getters: null\r\n'
-                +'    actions: null\r\n'
-                +'    mutations: null\r\n'
             )
         }
         try { fs.mkdirSync(modulesDir) } catch (e) {;}
@@ -166,6 +153,38 @@ var control = {
                         + `            firstupdate: (context, first) =>\r\n`
                         + `                context.commit('updatefirst', first)\r\n`
         fs.writeFileSync(modulesDir + `\\${name}.coffee`,scriptFile)
+    },
+    'filter': () => {
+        var filterDir = `${__dirname}\\src\\filters`
+        try { fs.mkdirSync(filterDir) } catch (e) {;}
+        if(!fs.existsSync(`${filterDir}\\index.coffee`)){
+            fs.writeFileSync(`${filterDir}\\index.coffee`,
+                `# File imports for store modules.  Import your modules here!\r\n`
+                +`import './${name}.coffee'\r\n\r\n`
+            )
+        }
+        var scriptFile = `import Vue from 'vue'\r\n`
+                        + `Vue.filter '${name}', (value) ->\r\n`
+                        + `     if value?\r\n`
+                        + `         value = value.toString()\r\n`
+                        + `         value = value.charAt(0).toUpperCase() + value.slice(1)\r\n`
+                        + '     return value\r\n'
+        fs.writeFileSync(filterDir + `\\${name}.coffee`,scriptFile)        
     }
 }
-control[fileType]()
+
+if(fileType == undefined || control[fileType] == undefined){
+    console.log('Usage: [fileType - component|service|model|module|filter] [name] [options - routable 4files|script]')
+    console.log('  component:  can be routable, this includes special tidyroute info in the component')
+    console.log('  component vue structure allows for one file, or split up.')
+    console.log('    4files to split out all files into individual ones')
+    console.log('    script to split out only the script file')
+    console.log('    otherwise all contents are contained in the single .vue file')
+    console.log('    when chosing any option to split out files, all files are placed into a subdirectory')
+    console.log('  model: models are coffescript classes')
+    console.log('  module: adds namespaced state management')
+    console.log('  filter: adds a global filter')
+    return
+}else{
+    control[fileType]()
+}
