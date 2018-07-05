@@ -1,6 +1,8 @@
 <script lang="coffee">
 export default
-  name: 'App'
+    name: 'App'
+    created: () ->
+        this.$store.dispatch 'persons/fetchPeople'  
 </script>
 <style>
 #app {

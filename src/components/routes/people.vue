@@ -8,8 +8,7 @@ people =
     computed:
         people: () ->
                     this.$store.getters['persons/getPeople']
-    created: () ->
-        this.$store.dispatch 'persons/fetchPeople'
+
 VueTidyRoutes.route '/people',
         name: 'people'
         component: people
