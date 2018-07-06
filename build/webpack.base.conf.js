@@ -41,6 +41,14 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test: /\.pug$/,
+        loader: 'pub-plain-loader'
+      },
+      {
+        test: /iview\/.*?js$/,
+        loader: 'babel-loader'
+      },      
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]

@@ -18,15 +18,14 @@ VueTidyRoutes.route '/person',
 export default person
 </script>
 
-<style lang="scss" >
-.person {}
+<style lang="stylus" >
+
 </style>
 
-<template >
-<div class="person">
-        <input v-model="person.name" placeholder="Name"/>
-        <input v-model="person.email" placeholder="Email"/>
-        <input v-model="person.birthDate" placeholder="Date of birth"/>
-        <button type="button" v-on:click="addPerson(person)">Save Person</button>
-</div>
+<template lang="pug" >
+.person
+        input(v-model="person.name" placeholder="Name")
+        input(v-model="person.email" placeholder="Email")
+        input(v-model="person.birthDate" placeholder="Date of birth")
+        button(type='button' v-on:click="addPerson(person)") Save Person
 </template>

@@ -13,12 +13,11 @@ VueTidyRoutes.route '/',
 export default home
 </script>
 
-<style lang="scss" >
-.home {}
+<style lang="stylus" >
+
 </style>
 
-<template >
-<div class="home">
-    Hello World from home component
-</div>
+<template lang="pug" >
+.home
+    | Hello World from home component
 </template>

@@ -4,18 +4,15 @@ export default
      props: ['person']
 </script>
 
-<style lang="scss" >
-.personrow {}
+<style lang="stylus" >
+
 </style>
 
-<template >
-<li class="personrow">
-    <div>
-        <ul>
-            <li>{{person.name | capitalize }}</li>
-            <li>{{person.email}}</li>
-            <li>{{person.birthDate | dateFormat }}</li>
-        </ul>
-    </div>
-</li>
+<template lang="pug">
+li.personrow
+    div
+    ul
+        li {{ person.name | capitalize }}
+        li {{ person.email}}
+        li {{ person.birthDate | dateFormat }}
 </template>

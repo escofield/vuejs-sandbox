@@ -16,16 +16,14 @@ VueTidyRoutes.route '/people',
 export default people
 </script>
 
-<style lang="scss" >
-.people {}
+<style lang="stylus" >
+
 </style>
 
-<template >
-<div class="people">
-    Hello World from people component
-    <router-link :to="{ name: 'person'}">Add Person</router-link>
-    <ul>
-        <li is="person-row" v-for="person in people" v-bind:person="person"></li>
-    </ul>
-</div>
+<template lang="pug">
+.people
+    | Hello World from people component
+    router-link(:to="{ name: 'person'}") Add Person
+    ul
+        li(is="person-row" v-for="person in people" v-bind:person="person")
 </template>
