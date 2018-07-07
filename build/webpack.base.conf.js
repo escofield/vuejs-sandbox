@@ -13,7 +13,7 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.coffee'
+    app: ['./src/main.coffee','babel-polyfill']
   },
   output: {
     path: config.build.assetsRoot,
@@ -27,6 +27,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      '~theme': 'src/ruby-theme'
     }
   },
   module: {
