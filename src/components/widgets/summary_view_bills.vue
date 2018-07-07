@@ -1,19 +1,37 @@
 <script lang="coffee" >
+import water from '@/assets/water.svg'
+import light from '@/assets/light.svg'
+import home from '@/assets/home.svg'
+import phone from '@/assets/phone.svg'
+
+iconMap = 
+    'waterdrop': water
+    'lightbulb': light
+    'home': home
+    'iphone': phone
+
 export default 
     name: 'summary-view-bills'
     props: ['bill']
+    methods:
+        icon: (s) ->
+            iconMap[s]
 </script>
 
-<style scoped lang="stylus" >
-
-.ivu-icon-waterdrop
+<style lang="stylus" >
+@import "../../ruby-theme/variables.styl"
+.waterdrop
     color #00a7ff
-.ivu-icon-lightbulb
+    fill currentColor
+.lightbulb
     color #ffc400
-.ivu-icon-home
-    color #c600ff
-.ivu-icon-iphone
+    fill currentColor
+.home
+    color #ff00f6
+    fill currentColor
+.iphone
     color #ff0392
+    fill currentColor
 .card-item-type
     grid-area card-item-type
     align-self center
@@ -35,6 +53,28 @@ export default
         "card-item-type card-item-name card-item-payment"
 .money
     font-weight: bold
+.button
+    border solid 1px lighten($primary-color,80%)
+    text-align center
+    border-radius 8px
+    padding-top 5px
+    padding-bottom 5px
+.card-item-type
+    padding 10px
+    .aspect1
+        width 100%
+        padding-top 100%
+        position relative
+        .circle
+            border-radius 50%
+            position absolute
+            top 0
+            bottom 0
+            left 0
+            right 0
+            svg
+                path
+                    width 100% !important
 
 </style>
 
@@ -42,8 +82,8 @@ export default
 li.summary_view_bills
         .card-item
             .card-item-type
-                h1
-                    icon(:type="bill.icon")
+                .aspect1
+                    svg-icon.circle(v-bind:icon="bill.icon")
             .card-item-due-date(v-if="!bill.isScheduled")
                 | Due {{ bill.date | prettyDate }}
             .card-item-scheduled-date(v-if="bill.isScheduled")
