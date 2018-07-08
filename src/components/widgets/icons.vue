@@ -129,5 +129,62 @@ export default
             d="M 61.999222,88.967973 A 256,256 0 0 1 422.63298,61.65636 256,256 0 0 1 450.68568,422.23323 256,256 0 0 1 90.167227,451.0269 256,256 0 0 1 60.632706,90.568382"
             id="path4490"
             style="opacity:0.19800002;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.1198523;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" /></svg>
+    <svg v-if="icon == 'round'"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        id="svg8"
+        version="1.1"
+        viewBox="0 0 100 100">
+        <defs
+            id="defs2">
+            <linearGradient
+            id="linearGradient4504">
+            <stop
+                id="stop4500"
+                offset="0"
+                style="stop-color:#bb23bb;stop-opacity:1" />
+            <stop
+                id="stop4502"
+                offset="1"
+                style="stop-color:#ff0023;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient
+            gradientUnits="userSpaceOnUse"
+            y2="113.95238"
+            x2="155.18452"
+            y1="113.95238"
+            x1="55.184532"
+            id="linearGradient4506"
+            xlink:href="#linearGradient4504" />
+        </defs>
+        <metadata
+            id="metadata5">
+            <rdf:RDF>
+            <cc:Work
+                rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type
+                rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                <dc:title></dc:title>
+            </cc:Work>
+            </rdf:RDF>
+        </metadata>
+        <g
+            transform="translate(-55.184532,-63.952377)"
+            id="layer1">
+            <path
+            d="m 67.293755,81.328934 a 50,50 0 0 1 70.436285,-5.334299 50,50 0 0 1 5.47904,70.425165 50,50 0 0 1 -70.413761,5.62377 50,50 0 0 1 -5.768461,-70.402056"
+            id="path4485"
+            style="opacity:1;fill:url(#linearGradient4506);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.29620346;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+            <path
+            id="rect4510"
+            d="M 101.74495,93.976336 V 110.5128 H 85.208491 v 6.87916 h 16.536459 v 16.53646 h 6.87916 v -16.53646 h 16.53646 V 110.5128 H 108.62411 V 93.976336 Z"
+            style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.09725326;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+        </g>
+        </svg>
 </div>
 </template>

@@ -1,5 +1,5 @@
 # File imports for store modules.  Import your modules here!
-import './capitalize.coffee'
-import './dateFormat.coffee'
-import './currency.coffee'
-import './prettyDate.coffee'
+import 'filter/capitalize.coffee'
+import 'filter/dateFormat.coffee'
+import 'filter/currency.coffee'
+import 'filter/prettyDate.coffee'

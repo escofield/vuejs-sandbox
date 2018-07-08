@@ -1,4 +1,4 @@
 import Vue from 'vue'
 import injector from 'vue-inject'
 
-import '@/services/people.coffee'
+import 'service/people.coffee'

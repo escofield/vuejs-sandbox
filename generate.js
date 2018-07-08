@@ -57,7 +57,7 @@ var generateScriptTypeIndex = () => {
 }
 var control = {
     'component': () => {
-        var templateFile = `<div class="${name}">\r\n    Hello World from ${name} component\r\n</div>`
+        var templateFile = `.${name}\r\n    Hello World from ${name} component\r\n`
         var styleFile = `.${name} \{\}`
         var vueFilename = `${__dirname}\\src\\components${scriptTypeFolder()}\\`
         var vueFileSrcs = {t:'',s:'',c:''}
@@ -70,8 +70,8 @@ var control = {
             if(options.includes('4files')){
                 vueFileSrcs.t = `src="./${name}.vue.html"`
                 vueFileSrcs.s = `src="./${name}.vue.coffee"`
-                vueFileSrcs.c = `src="./${name}.vue.scss"`
-                fs.writeFileSync(vueSubitemsDir + `${name}.vue.scss`,styleFile)
+                vueFileSrcs.c = `src="./${name}.vue.styl"`
+                fs.writeFileSync(vueSubitemsDir + `${name}.vue.styl`,styleFile)
                 fs.writeFileSync(vueSubitemsDir + `${name}.vue.html`,templateFile)
             }else if(options.includes('script')){
                 vueFileSrcs.s = `src="./${name}.vue.coffee"`
@@ -85,8 +85,8 @@ var control = {
             vueTagBody.s = `\r\n${generateScriptFile()}\r\n`
         }
         var vueFile = `<script lang="coffee" ${vueFileSrcs.s}>${vueTagBody.s}</script>\r\n`
-                        + `\r\n<style lang="scss" ${vueFileSrcs.c}>${vueTagBody.c}</style>\r\n`
-                        + `\r\n<template ${vueFileSrcs.t}>${vueTagBody.t}</template>`
+                        + `\r\n<style lang="stylus" ${vueFileSrcs.c}>${vueTagBody.c}</style>\r\n`
+                        + `\r\n<template lang="pug" ${vueFileSrcs.t}>${vueTagBody.t}</template>`
         fs.writeFileSync(`${vueFilename}\\${name}.vue`,vueFile)
         generateScriptTypeIndex()
     },

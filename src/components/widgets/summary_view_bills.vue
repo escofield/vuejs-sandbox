@@ -1,14 +1,4 @@
 <script lang="coffee" >
-import water from '@/assets/water.svg'
-import light from '@/assets/light.svg'
-import home from '@/assets/home.svg'
-import phone from '@/assets/phone.svg'
-
-iconMap = 
-    'waterdrop': water
-    'lightbulb': light
-    'home': home
-    'iphone': phone
 
 export default 
     name: 'summary-view-bills'
@@ -18,18 +8,18 @@ export default
             iconMap[s]
 </script>
 
-<style lang="stylus" >
+<style scoped lang="stylus" >
 @import "../../ruby-theme/variables.styl"
-.waterdrop
+/deep/ .waterdrop
     color #00a7ff
     fill currentColor
-.lightbulb
+/deep/ .lightbulb
     color #ffc400
     fill currentColor
-.home
+/deep/ .home
     color #ff00f6
     fill currentColor
-.iphone
+/deep/ .iphone
     color #ff0392
     fill currentColor
 .card-item-type
@@ -65,14 +55,14 @@ export default
         width 100%
         padding-top 100%
         position relative
-        .circle
+        /deep/ .circle
             border-radius 50%
             position absolute
             top 0
             bottom 0
             left 0
             right 0
-            svg
+            /deep/ svg
                 path
                     width 100% !important
 
