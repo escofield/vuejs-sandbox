@@ -65,16 +65,11 @@ h2.secondRow
 .fullHeight
     height: calc(100% - 37px)
 
-.infoBill
-    grid-area bills
-.infoBank
-    grid-area banks
 .infoDash
     display grid
-    grid-template-columns: 2fr 2fr
-    grid-template-areas:
-        "bills    banks"
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     margin-top 40px
+    grid-gap: 30px;
 .featureDash
     margin-top 40px
 @supports (display: grid)
@@ -84,21 +79,21 @@ h2.secondRow
     .infoBill
     .infoBank
         width: auto
+    .ivu-row:before
+    .ivu-row:before
+    .ivu-col:after
+    .ivu-col:before
+        content: none
 
-.featureFamily
-    grid-column span 1
-    grid-area family
-.featureBudgets
-    grid-column span 1
-    grid-area budgets
-.featureExpenses
-    grid-column span 1
-    grid-area expenses
 .featureDash
     display grid
-    grid-template-columns: 1fr 1fr 1fr
-    grid-template-areas:
-        "expenses budgets family"
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+@media (min-width: $screen-md)
+    .featureDash
+        grid-template-columns: repeat(3, 1fr);
+    .infoDash
+        grid-template-columns: repeat(2, 1fr);
 
 </style>
 
