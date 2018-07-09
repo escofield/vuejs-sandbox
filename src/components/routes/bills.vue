@@ -1,19 +1,29 @@
 <script lang="coffee" >
 import VueTidyRoutes from 'vue-tidyroutes'
 
-people =
-    name: 'people'
+bills =
+    name: 'bills'
     data: () ->
         msg: 'some data'
+
     computed:
         people: () ->
                     this.$store.getters['persons/getPeople']
+        isAuthorized: () ->
+                    this.$store.getters['auth/isAuthorized']
+    beforeRouteEnter: (to, from, next) ->
+        next (vm) ->
+            vm.$store.dispatch 'auth/validateAuth', [vm.$router, vm.$route]
 
-VueTidyRoutes.route '/people',
-        name: 'people'
-        component: people
+VueTidyRoutes.route '/bills',
+        name: 'bills'
+        component: bills
 
-export default people
+            
+
+
+
+export default bills
 </script>
 
 <style lang="stylus" >
@@ -21,8 +31,8 @@ export default people
 </style>
 
 <template lang="pug">
-.people
-    | Hello World from people component
+.bills
+    | Hello World from bills component
     router-link(:to="{ name: 'person'}") Add Person
     ul
         li(is="person-row" v-for="person in people" v-bind:person="person")

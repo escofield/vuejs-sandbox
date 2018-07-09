@@ -6,7 +6,15 @@ export default
     data: () ->
         logo: logo
     created: () ->
-        this.$store.dispatch 'persons/fetchPeople'  
+        this.$store.dispatch 'persons/fetchPeople'
+    computed: 
+        activeMenu: () ->
+            this.$route.name
+        isAuthorized: () ->
+                    this.$store.getters['auth/isAuthorized']
+    methods:
+        menuChange: (v) ->
+            this.$router.push({ name: v })
 </script>
 <style scoped lang="stylus">
 .layout
@@ -50,7 +58,7 @@ content
 <template lang="pug">
    .layout
       layout
-        header
+        header(v-if="isAuthorized")
             i-menu(mode="horizontal" theme="dark")
                 .layout-logo
                     img(:src="logo")
@@ -61,21 +69,15 @@ content
                     menu-item(name="upperoptions1")
                         icon(type="ios-paper")
                         router-link(:to="{ name: 'people'}") People
-        content(:style="{padding: '0 50px'}")
-            i-menu(mode="horizontal" theme="light" active-name="1")
-                menu-item(name="Overview")
-                    router-link(:to="{ name: 'home'}") Overview
-                menu-item(name="Bills")
-                    router-link(:to="{ name: 'people'}") Bills
-                menu-item(name="Expenses")
-                    router-link(:to="{ name: 'expenses'}") Expenses
-                menu-item(name="Budge")
-                    router-link(:to="{ name: 'Budge'}") Budge
-                menu-item(name="Wallet")
-                    router-link(:to="{ name: 'Wallet'}") Wallet
-                menu-item(name="Documents")
-                    router-link(:to="{ name: 'Documents'}") Documents
-            div.content
-                router-view
+        content(v-if="isAuthorized" :style="{padding: '0 50px'}")
+            i-menu(mode="horizontal" theme="light" @on-select="menuChange" :active-name="activeMenu")
+                menu-item(name="overview" ) Overview
+                menu-item(name="bills") Bills
+                menu-item(name="expenses") Expenses
+                menu-item(name="budget") Budget
+                menu-item(name="wallet") Wallet
+                menu-item(name="documents") Documents
+        div.content
+            router-view
         footer.layout-footer-center 2011-2016 © TalkingData
 </template>

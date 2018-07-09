@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Person from '@/models/person.coffee'
+import Person from 'model/person.coffee'
 
 export default 
          namespaced: true

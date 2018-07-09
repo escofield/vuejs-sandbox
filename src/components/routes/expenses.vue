@@ -5,6 +5,10 @@ expenses =
     name: 'expenses'
     data: () ->
         msg: 'some data'
+    beforeRouteEnter: (to, from, next) ->
+        next (vm) ->
+            vm.$store.dispatch 'auth/validateAuth', [vm.$router, vm.$route]
+
 
 VueTidyRoutes.route '/expenses',
         name: 'expenses'

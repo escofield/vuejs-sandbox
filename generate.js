@@ -1,3 +1,4 @@
+// run as node generate [filetype] [name] [options...]
 var fs = require('fs')
 var shell = require('shelljs')
 
@@ -9,7 +10,13 @@ var generateRoutableScriptFile = () => {
             + `    name: '${name}'\r\n`
             + `    data: () ->\r\n`
             + `        msg: 'some data'\r\n\r\n`
-            + `VueTidyRoutes.route '/${name}',\r\n`
+            + `    computed:\r\n`
+            + `        isAuthorized: () ->\r\n`
+            + `            this.$store.getters['auht/isAuthorized']\r\n`
+            + `    beforeRouteEnter: (to, from, next) ->\r\n`
+            + `       next (vm) ->\r\n`
+            + `          vm.$store.dispatch 'auth/valdateAuth', [vm.$router, vm.$route]\r\n`
+            + `\r\nVueTidyRoutes.route '/${name}',\r\n`
             + `        name: '${name}'\r\n`
             + `        component: ${name}\r\n\r\n`
             + `export default ${name}`
@@ -57,8 +64,8 @@ var generateScriptTypeIndex = () => {
 }
 var control = {
     'component': () => {
-        var templateFile = `.${name}\r\n    Hello World from ${name} component\r\n`
-        var styleFile = `.${name} \{\}`
+        var templateFile = `.${name}\r\n    | Hello World from ${name} component\r\n`
+        var styleFile = `@import "../../ruby-theme/variables.styl"\r\n.${name} \{\}`
         var vueFilename = `${__dirname}\\src\\components${scriptTypeFolder()}\\`
         var vueFileSrcs = {t:'',s:'',c:''}
         var vueTagBody = {t:'',s:'',c:''}
@@ -145,12 +152,12 @@ var control = {
                         + `            first: ''\r\n`
                         + `            last: ''\r\n`
                         + `         getters:\r\n`
-                        + `            fullname: (state) => "#{state.first} #{state.last}"\r\n`
+                        + `            fullname: (state) -> "#{state.first} #{state.last}"\r\n`
                         + `         mutations:\r\n`
-                        + `            updatefirst: (state, first) =>\r\n`
+                        + `            updatefirst: (state, first) ->\r\n`
                         + `                state.first = first\r\n`
                         + `         actions:\r\n`
-                        + `            firstupdate: (context, first) =>\r\n`
+                        + `            firstupdate: (context, first) ->\r\n`
                         + `                context.commit('updatefirst', first)\r\n`
         fs.writeFileSync(modulesDir + `\\${name}.coffee`,scriptFile)
     },

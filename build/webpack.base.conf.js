@@ -33,6 +33,7 @@ module.exports = {
       'filter': resolve('src') + '/filters/',
       'model': resolve('src') + '/models/',
       'service': resolve('src') + '/services/',
+      'module': resolve('src') + '/store/modules'
     }
   },
   module: {

@@ -186,5 +186,78 @@ export default
             style="opacity:1;fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.09725326;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         </g>
         </svg>
+
+    <svg v-if="icon == 'logo'"
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        viewBox="0 0 193.7244 67.299675"
+        version="1.1"
+        id="svg8"
+        inkscape:version="0.92.1 r15371"
+        sodipodi:docname="logo.svg">
+        <defs
+            id="defs2" />
+        <sodipodi:namedview
+            id="base"
+            pagecolor="#0f0f0f"
+            bordercolor="#666666"
+            borderopacity="1.0"
+            inkscape:pageopacity="0"
+            inkscape:pageshadow="2"
+            inkscape:zoom="0.7"
+            inkscape:cx="259.96521"
+            inkscape:cy="86.774141"
+            inkscape:document-units="mm"
+            inkscape:current-layer="layer1"
+            showgrid="false"
+            fit-margin-top="0"
+            fit-margin-left="0"
+            fit-margin-right="0"
+            fit-margin-bottom="0"
+            inkscape:window-width="1920"
+            inkscape:window-height="1057"
+            inkscape:window-x="1272"
+            inkscape:window-y="8"
+            inkscape:window-maximized="1" />
+        <metadata
+            id="metadata5">
+            <rdf:RDF>
+            <cc:Work
+                rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type
+                rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                <dc:title></dc:title>
+            </cc:Work>
+            </rdf:RDF>
+        </metadata>
+        <g
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1"
+            transform="translate(-5.5600164,-94.328858)">
+            <path
+            style="opacity:1;;fill-opacity:0.98469388;stroke:#b3b3b3;stroke-width:0.30377096;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+            d="M 19.023236,94.480743 5.7201719,107.7838 h -0.00827 v 18.98438 h 0.00827 L 40.428647,161.47665 75.137122,126.76818 V 107.7838 L 61.834058,94.480743 Z m 0.731737,2.584854 5.102532,8.409823 H 11.533771 Z m 2.834971,0 h 13.323215 l -9.260416,6.567043 z m 17.627864,0 11.575521,8.409823 H 28.642288 Z m 4.29431,0 h 12.94598 l -3.96875,6.567043 z m 15.780951,0 8.976711,8.409823 H 55.190021 Z M 8.5778782,108.51193 H 25.713266 v 17.53639 H 8.5778782 Z m 46.6384978,0 h 17.135387 v 17.53639 H 55.216376 Z m -26.619565,0.0212 H 52.33283 v 17.47801 H 28.596811 Z m -16.970539,20.42098 h 57.730324 l -28.86542,28.39775 z"
+            id="rect4485"
+            inkscape:connector-curvature="0" />
+            <text
+            xml:space="preserve"
+            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.87777805px;line-height:1.25;font-family:'8514oem';-inkscape-font-specification:'8514oem';letter-spacing:0px;word-spacing:0px;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+            x="89.57328"
+            y="140.09578"
+            id="text4594"><tspan
+                sodipodi:role="line"
+                id="tspan4592"
+                x="89.57328"
+                y="140.09578"
+                style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:50.79999924px;font-family:'Impress BT';-inkscape-font-specification:'Impress BT';stroke-width:0.26458332">Ruby</tspan></text>
+        </g>
+        </svg>
 </div>
 </template>

@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "unit": "jest --config test/unit/jest.conf.js --coverage",
-    "test": "npm run unit",
+    "jest": "./node_modules/.bin/jest",
     "build": "node build/build.js",
     "generate": "node generate.js"
   },
@@ -16,6 +15,7 @@
     "babel-polyfill": "^6.26.0",
     "coffee-loader": "^0.9.0",
     "coffeescript": "^2.3.1",
+    "fluent-validator": "^1.1.0",
     "iview": "^2.14.3",
     "less": "^3.5.3",
     "less-loader": "^4.1.0",
@@ -31,7 +31,7 @@
     "autoprefixer": "^7.1.2",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
-    "babel-jest": "^21.0.2",
+    "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.1",
     "babel-plugin-dynamic-import-node": "^1.2.0",
     "babel-plugin-import": "^1.8.0",
@@ -49,8 +49,11 @@
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "html-webpack-plugin": "^2.30.1",
-    "jest": "^22.0.4",
+    "jest": "^22.4.4",
+    "jest-preset-coffeescript": "^1.0.0",
     "jest-serializer-vue": "^0.3.0",
+    "jest-vue-preprocessor": "^1.4.0",
+    "jsdom": "^11.11.0",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -72,6 +75,7 @@
     "vue-jest": "^1.0.2",
     "vue-loader": "^13.3.0",
     "vue-separate-files-webpack-loader": "^1.5.0",
+    "vue-server-renderer": "^2.5.16",
     "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.5.2",
     "webpack": "^3.6.0",
@@ -87,5 +91,22 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "jest": {
+    "preset": "jest-preset-coffeescript",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue",
+      "coffee"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "moduleNameMapper": {
+      "^~?__root/(.*)$": "<rootDir>/$1",
+      "^~?__test/(.*)$": "<rootDir>/test/$1"
+    }
+  }
 }

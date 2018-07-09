@@ -1,8 +1,8 @@
 <script lang="coffee" >
 import VueTidyRoutes from 'vue-tidyroutes'
 
-home =
-    name: 'home'
+overview =
+    name: 'overview'
     data: () ->
         msg: 'some data'
         bills: [
@@ -20,13 +20,15 @@ home =
             {memberType: "Collaborator", name: "Essie Barnes", avatar: "user.svg"},
             {memberType: "Owner", name: "Lucille Barnes", avatar: "lb.svg"}
         ]
+    beforeRouteEnter: (to, from, next) ->
+        next (vm) ->
+            vm.$store.dispatch 'auth/validateAuth', [vm.$router, vm.$route]
 
+VueTidyRoutes.route '/overview',
+        name: 'overview'
+        component: overview
 
-VueTidyRoutes.route '/',
-        name: 'home'
-        component: home
-
-export default home
+export default overview
 </script>
 
 <style scoped lang="stylus" >
