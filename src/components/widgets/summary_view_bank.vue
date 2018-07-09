@@ -4,7 +4,7 @@ export default
      props: ['bank']
 </script>
 
-<style lang="stylus" >
+<style scoped lang="stylus" >
 @import "../../ruby-theme/variables.styl"
 .negative
     color: $error-color

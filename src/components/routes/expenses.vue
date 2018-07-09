@@ -17,7 +17,7 @@ VueTidyRoutes.route '/expenses',
 export default expenses
 </script>
 
-<style lang="scss" >
+<style scoped lang="scss" >
 .expenses {}
 </style>
 

@@ -26,7 +26,7 @@ VueTidyRoutes.route '/bills',
 export default bills
 </script>
 
-<style lang="stylus" >
+<style scoped lang="stylus" >
 
 </style>
 

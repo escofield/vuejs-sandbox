@@ -17,7 +17,7 @@ VueTidyRoutes.route '/documents',
 export default documents
 </script>
 
-<style lang="stylus" >
+<style scoped lang="stylus" >
 .documents {}
 </style>
 

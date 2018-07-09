@@ -3,10 +3,12 @@
 .@{loading-bar-prefix-cls} {
     width: 100%;
     position: fixed;
-    top: 61px;
+    top: 0px;
     left: 0;
     right: 0;
     z-index: @zindex-loading-bar;
+    max-width: @screen-lg;
+    margin: auto;
 
     &-inner {
         transition: width @transition-time linear;

@@ -16,7 +16,7 @@ VueTidyRoutes.route '/budget',
 export default budget
 </script>
 
-<style lang="stylus" >
+<style scoped lang="stylus" >
 .budget {}
 </style>
 

@@ -16,7 +16,7 @@ VueTidyRoutes.route '/wallet',
 export default wallet
 </script>
 
-<style lang="stylus" >
+<style scoped lang="stylus" >
 .wallet {}
 </style>
 

@@ -91,7 +91,7 @@ h2.secondRow
     display grid
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 30px;
-@media (min-width: $screen-md)
+@media (min-width: $screen-sm)
     .featureDash
         grid-template-columns: repeat(3, 1fr);
     .infoDash
@@ -99,7 +99,7 @@ h2.secondRow
 
 </style>
 
-<template lang="pug" >
+<template scoped lang="pug" >
 div
     row.infoDash(:gutter="30")
         i-col.infoBill(span="12")

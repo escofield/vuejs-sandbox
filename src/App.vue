@@ -12,17 +12,24 @@ export default
             this.$route.name
         isAuthorized: () ->
                     this.$store.getters['auth/isAuthorized']
+        getFramingClass: () ->
+            return 'loginFrame' if this.$route.name == 'login'
+            'content'
     methods:
         menuChange: (v) ->
             this.$router.push({ name: v })
+
 </script>
-<style scoped lang="stylus">
+<style lang="stylus">
+@import "./ruby-theme/variables.styl"
 .layout
-    border 1px solid #d7dde4
     position relative
     border-radius 4px
     overflow hidden
-
+    max-width $screen-lg
+    margin auto
+    background #f8f8f8
+    overflow: hidden
 .layout-logo
     width 100px
     height 30px
@@ -48,16 +55,15 @@ export default
 content
     .ivu-menu
         margin-bottom 50px
-        width 560px
+        width 700px
         margin auto
 .content
-    margin-left: 50px
-    margin-right: 50px
-
+    padding 0px 30px
+.loginFrame
+    padding-left 30px
 </style>
 <template lang="pug">
-   .layout
-      layout
+    layout.layout
         header(v-if="isAuthorized")
             i-menu(mode="horizontal" theme="dark")
                 .layout-logo
@@ -77,7 +83,7 @@ content
                 menu-item(name="budget") Budget
                 menu-item(name="wallet") Wallet
                 menu-item(name="documents") Documents
-        div.content
+        div(:class="getFramingClass")
             router-view
         footer.layout-footer-center 2011-2016 © TalkingData
 </template>

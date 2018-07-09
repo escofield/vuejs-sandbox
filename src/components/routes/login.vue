@@ -27,10 +27,10 @@ export default login
 @import "../../ruby-theme/variables.styl"
 .login
     display grid
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    
 
-@media (min-width: $screen-md)
+@media (min-width: $screen-sm)
     .login
         grid-template-columns: repeat(2, 1fr);
 
@@ -54,6 +54,15 @@ export default login
     margin-bottom 30px
     height 50px
     font-size 2em
+.ivu-input-group-prepend
+    .ivu-icon
+        font-size 26px
+.fancyImage
+    background-image url("/static/login.PNG")
+    background-repeat: no-repeat
+    height: 900px
+    background-size: cover
+    background-position: center;
 </style>
 
 <template lang="pug" >
@@ -76,5 +85,5 @@ row.login(:gutter="30")
             | Want to work with Ruby? 
             router-link(:to="{ name: 'home'}") Signup!
     i-col.fancyImage(span="12")
-        img(src="/static/login.PNG")
+
 </template>
