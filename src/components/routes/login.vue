@@ -10,11 +10,11 @@ login =
     methods:
         login: () ->
             bself = this
-            this.$store.dispatch 'auth/logIn', [this.$router, this.$data.userid, this.$data.password]
+            this.$store.dispatch 'auth/logIn', [this.$router, this.$data.credentials.userid, this.$data.credentials.password]
                 .then (resolved) =>
                     this.$Message.info('You have successfully logged in.')
                 ,(rejected) =>
-                    this.$Notice.open { title: 'Authorization', desc: rejected }
+                    this.$Notice.open this.$AppConfig.notice, ... { title: 'Authorization', desc: rejected }
 
 VueTidyRoutes.route '/',
         name: 'login'

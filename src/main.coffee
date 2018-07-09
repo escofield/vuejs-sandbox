@@ -16,9 +16,13 @@ Vue.use(iView)
 Vue.use(VueResource)
 Vue.config.productionTip = false
 
-new Vue
+vue = new Vue
   el: '#app',
   router: router
   components: { App }
   template: '<App/>'
   store: store
+
+vue.$AppConfig =
+  notice:
+    duration: 0

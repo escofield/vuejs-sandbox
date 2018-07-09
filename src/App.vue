@@ -7,6 +7,7 @@ export default
         logo: logo
     created: () ->
         this.$store.dispatch 'persons/fetchPeople'
+        
     computed: 
         activeMenu: () ->
             this.$route.name
