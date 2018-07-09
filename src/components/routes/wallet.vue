@@ -21,7 +21,6 @@ export default wallet
 </style>
 
 <template lang="pug" >
-.wallet
-    | Hello World from wallet component
+.wallet Hello World from wallet component
 
 </template>

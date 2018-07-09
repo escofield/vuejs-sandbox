@@ -31,8 +31,7 @@ export default bills
 </style>
 
 <template lang="pug">
-.bills
-    | Hello World from bills component
+.bills Hello World from bills component
     router-link(:to="{ name: 'person'}") Add Person
     ul
         li(is="person-row" v-for="person in people" v-bind:person="person")

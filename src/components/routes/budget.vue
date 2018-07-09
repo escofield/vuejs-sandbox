@@ -21,7 +21,6 @@ export default budget
 </style>
 
 <template lang="pug" >
-.budget
-    Hello World from budget component
+.budget Hello World from budget component
 
 </template>

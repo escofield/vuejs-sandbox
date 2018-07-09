@@ -22,7 +22,6 @@ export default documents
 </style>
 
 <template lang="pug" >
-.documents
-    Hello World from documents component
+.documents Hello World from documents component
 
 </template>

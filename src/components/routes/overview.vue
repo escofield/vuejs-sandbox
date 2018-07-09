@@ -69,7 +69,7 @@ h2.secondRow
 
 .infoDash
     display grid
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     margin-top 40px
     grid-gap: 30px;
 .featureDash
@@ -104,8 +104,7 @@ div
     row.infoDash(:gutter="30")
         i-col.infoBill(span="12")
             .card-header
-                h1.title 
-                    | Bills & Payments
+                h1.title Bills & Payments
                 div.title-button
                     h2
                         icon.plus-button(type="plus-round")
@@ -117,8 +116,7 @@ div
         i-col.infoBank(span="12")
             div
                 .card-header
-                    h1.title 
-                        | Banks & Cards
+                    h1.title Banks & Cards
                     div.title-button
                         h2
                             icon.plus-button(type="plus-round")
@@ -130,36 +128,29 @@ div
         i-col.featureExpenses(span="8")
             div
                 .card-header
-                    h1.title 
-                        | Expenses
+                    h1.title Expenses
                     div.title-button
                         h2.center
                             icon.plus-button(type="plus-round")
             card.fullHeight
                 header.center
-                    h2.secondRow
-                        | No expenses, yet.
-                p
-                    | Start adding expenses to keep track of where your money goes.
+                    h2.secondRow No expenses, yet.
+                p Start adding expenses to keep track of where your money goes.
                 svg-icon.round-button(v-bind:icon="'round'")
         i-col.featureBudgets(span="8")
             .card-header
-                h1.title 
-                    | Budgets
+                h1.title Budgets
                 div.title-button
                     h2.center
                         icon.plus-button(type="plus-round")
             card.fullHeight
                 header.center
-                    h2.secondRow
-                        | No budgets
-                p
-                    | Start adding budgest to keep track of where your money goes.
+                    h2.secondRow No budgets
+                p Start adding budgest to keep track of where your money goes.
                 svg-icon.round-button(v-bind:icon="'round'")
         i-col.featureFamily(span="8")
             .card-header
-                h1.title 
-                    | Family
+                h1.title Family
                 div.title-button
                     h2
                         icon.plus-button(type="plus-round")

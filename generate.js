@@ -64,7 +64,7 @@ var generateScriptTypeIndex = () => {
 }
 var control = {
     'component': () => {
-        var templateFile = `.${name}\r\n    | Hello World from ${name} component\r\n`
+        var templateFile = `.${name} Hello World from ${name} component\r\n`
         var styleFile = `@import "../../ruby-theme/variables.styl"\r\n.${name} \{\}`
         var vueFilename = `${__dirname}\\src\\components${scriptTypeFolder()}\\`
         var vueFileSrcs = {t:'',s:'',c:''}
