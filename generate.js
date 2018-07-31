@@ -3,7 +3,7 @@ var fs = require('fs')
 var shell = require('shelljs')
 
 var [ , , fileType, name, ...options] = process.argv
-
+ 
 var generateRoutableScriptFile = () => {
     return `import VueTidyRoutes from 'vue-tidyroutes'\r\n\r\n`
             + `${name} =\r\n`
